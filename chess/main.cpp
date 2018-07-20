@@ -25,8 +25,8 @@ HBITMAP King::hbmMask		= nullptr;
 HWND** GameData::hFieldsTable = nullptr;
 HWND GameData::hSelected = nullptr;
 std::stack<HWND> GameData::PossibleToMove;
-Figure** GameData::whiteFigures = new Figure*[16];
-Figure** GameData::blackFigures = new Figure*[16];
+Figure** GameData::whiteFigures = new Figure*[16]();
+Figure** GameData::blackFigures = new Figure*[16]();
 HWND GameData::hShahing = nullptr;
 Figure* GameData::enPassant = nullptr;
 std::list<Figure*> GameData::whitePromoted;
@@ -173,7 +173,7 @@ BOOL InitInstance(HINSTANCE hInstance)
 
    return TRUE;
 }
-#include <fstream>
+
 //
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
@@ -306,11 +306,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		delete[] GameData::whiteFigures;
 		delete[] GameData::blackFigures;
 
-
-		for (int i = 0; i < 8; ++i) {
-			delete[] GameData::hFieldsTable[i];
+		if (GameData::hFieldsTable) {
+			for (int i = 0; i < 8; ++i) {
+				delete[] GameData::hFieldsTable[i];
+			}
+			delete[] GameData::hFieldsTable;
 		}
-		delete[] GameData::hFieldsTable;
 
 		DeleteObject(GameData::hbmChessboard);
 		DeleteClassBitmaps();

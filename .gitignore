@@ -5,3 +5,6 @@
 /chess/temp
 /chess/Debug
 /.vs/chess/v15
+/chess/Release/chess.tlog
+/chess/Release
+/Release
