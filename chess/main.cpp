@@ -173,7 +173,7 @@ BOOL InitInstance(HINSTANCE hInstance)
 
    return TRUE;
 }
-
+#include <fstream>
 //
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
@@ -203,7 +203,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		
 		// loading chessboard bitmap
 		GameData::hbmChessboard = (HBITMAP)LoadImage(nullptr,
-			L"C:\\Users\\Lukasz\\Desktop\\czas\\szachy_grafika\\chessboard.bmp",
+			L"chess_graphics\\chessboard.bmp",
 			IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 
 		if (!GameData::hbmChessboard) {
@@ -1032,37 +1032,37 @@ BOOL InitChessFields(HWND hWnd, HBITMAP hbmBitmap) {
 //		This bitmaps are displayed in field occupied by a particular figure
 //
 BOOL LoadClassBitmaps() {
-	Pawn::hbmPawn = (HBITMAP)LoadImage(nullptr, L"C:\\Users\\Lukasz\\Desktop\\czas\\szachy_grafika\\fig\\pionek.bmp",
+	Pawn::hbmPawn = (HBITMAP)LoadImage(nullptr, L"chess_graphics\\fig\\pionek.bmp",
 		IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	if (!Pawn::hbmPawn)
 		return FALSE;
 	Pawn::hbmMask = CreateBitmapMask(Pawn::hbmPawn, RGB(255, 0, 255));
 
-	Rook::hbmRook = (HBITMAP)LoadImage(nullptr, L"C:\\Users\\Lukasz\\Desktop\\czas\\szachy_grafika\\fig\\wieza.bmp",
+	Rook::hbmRook = (HBITMAP)LoadImage(nullptr, L"chess_graphics\\fig\\wieza.bmp",
 		IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	if (!Rook::hbmRook)
 		return FALSE;
 	Rook::hbmMask = CreateBitmapMask(Rook::hbmRook, RGB(255, 0, 255));
 
-	Knight::hbmKnight = (HBITMAP)LoadImage(nullptr, L"C:\\Users\\Lukasz\\Desktop\\czas\\szachy_grafika\\fig\\kon.bmp",
+	Knight::hbmKnight = (HBITMAP)LoadImage(nullptr, L"chess_graphics\\fig\\kon.bmp",
 		IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	if (!Knight::hbmKnight)
 		return FALSE;
 	Knight::hbmMask = CreateBitmapMask(Knight::hbmKnight, RGB(255, 0, 255));
 
-	Bishop::hbmBishop = (HBITMAP)LoadImage(nullptr, L"C:\\Users\\Lukasz\\Desktop\\czas\\szachy_grafika\\fig\\goniec.bmp",
+	Bishop::hbmBishop = (HBITMAP)LoadImage(nullptr, L"chess_graphics\\fig\\goniec.bmp",
 		IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	if (!Bishop::hbmBishop)
 		return FALSE;
 	Bishop::hbmMask = CreateBitmapMask(Bishop::hbmBishop, RGB(255, 0, 255));
 
-	Queen::hbmQueen = (HBITMAP)LoadImage(nullptr, L"C:\\Users\\Lukasz\\Desktop\\czas\\szachy_grafika\\fig\\dama.bmp",
+	Queen::hbmQueen = (HBITMAP)LoadImage(nullptr, L"chess_graphics\\fig\\dama.bmp",
 		IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	if (!Queen::hbmQueen)
 		return FALSE;
 	Queen::hbmMask = CreateBitmapMask(Queen::hbmQueen, RGB(255, 0, 255));
 
-	King::hbmKing = (HBITMAP)LoadImage(nullptr, L"C:\\Users\\Lukasz\\Desktop\\czas\\szachy_grafika\\fig\\krol.bmp",
+	King::hbmKing = (HBITMAP)LoadImage(nullptr, L"chess_graphics\\fig\\krol.bmp",
 		IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	if (!King::hbmKing)
 		return FALSE;
